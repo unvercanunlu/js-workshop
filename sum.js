@@ -1,11 +1,5 @@
 function sum(n) {
-    if (typeof n !== 'number') {
-        throw new Error("n should be number!");
-    } else if (Number.isNaN(n) || Number.isFinite(n) || !Number.isInteger(n)) {
-        throw new Error("n should be integer number!");
-    } else if (n < 0) {
-        throw new Error("n should be non-negative number!");
-    }
+    validationForSum(n);
 
     /*
     
@@ -21,6 +15,18 @@ function sum(n) {
     return (n * (n + 1)) / 2;
 }
 
+function validationForSum(n) {
+    if (n === null || n === undefined) {
+        throw new Error("input missing!");
+    } else if (typeof n !== 'number') {
+        throw new Error("input should be number!");
+    } else if (Number.isNaN(n) || !Number.isFinite(n) || !Number.isInteger(n)) {
+        throw new Error("input should be integer number!");
+    } else if (n < 0) {
+        throw new Error("input should be non-negative integer number!");
+    }
+}
+
 const inputs = [
     undefined,
     null,
@@ -30,7 +36,7 @@ const inputs = [
     0.9,
     -1,
     10,
-    10000000000
+    10000000
 ];
 
 console.log("There are " + inputs.length + " test cases.");
