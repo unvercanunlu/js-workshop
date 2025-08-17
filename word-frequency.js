@@ -15,19 +15,25 @@ function removePunctiations(text) {
 
     */
 
-    return text.replace(/[.,?':;!]/g, ' ');
+    return text.replace(/[.,?':;!"]/g, ' ');
 }
 
 function normalize(text) {
-    return removePunctiations(text.toLowerCase())
+    return removePunctiations(
+        text.toLowerCase()
+    );
 }
 
-function countWordFrequency(input) {
+function validationForCountWordFrequency(input) {
     if (input == null || input === undefined || typeof input !== 'string' || input.length == 0) {
         throw new Error("input must be non-empty string!");
     }
+}
 
-    const normalized = normalize(input);
+function countWordFrequency(text) {
+    validationForCountWordFrequency(text);
+
+    const normalized = normalize(text);
 
     const splitted = normalized.split(' ')
         .map(word => word.trim())
@@ -66,7 +72,3 @@ function countWordFrequency(input) {
 
     return Object.fromEntries(frequencies);
 }
-
-console.log(
-    countWordFrequency("the quick brown fox jumps over the lazy dog")
-);

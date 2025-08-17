@@ -5,8 +5,8 @@ function normalize(text) {
     return text.toLowerCase();
 }
 
-function validationForIsPalindrome(text) {
-    if (text == null || text === undefined || typeof text !== 'string') {
+function validationForIsPalindrome(input) {
+    if (input == null || input === undefined || typeof input !== 'string') {
         throw new Error("input must be a string!");
     }
 }

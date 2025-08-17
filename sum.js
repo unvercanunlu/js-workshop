@@ -26,26 +26,3 @@ function validationForSum(n) {
         throw new Error("input should be non-negative integer number!");
     }
 }
-
-const inputs = [
-    undefined,
-    null,
-    'a',
-    [1, 2, 3],
-    { a: 1, b: 2 },
-    0.9,
-    -1,
-    10,
-    10000000
-];
-
-console.log("There are " + inputs.length + " test cases.");
-
-inputs.forEach(input => {
-    try {
-        let result = sum(input);
-        console.log("input: " + input + ", result: " + result);
-    } catch (error) {
-        console.error("input: " + input + ", error: " + error.message)
-    }
-});

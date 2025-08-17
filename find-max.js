@@ -1,31 +1,38 @@
-function findMax(arr) {
-    // input validation
-    if (arr === null || arr === undefined) {
-        throw new Error("input missing!");
-    } else if (typeof arr !== "object" && !Array.isArray(arr)) {
-        throw new Error("input should be array!");
-    } else if (arr.length === 0) {
-        throw new Error("input should not be empty!");
+function validationForFindMax(arr) {
+    if (arr === null || arr === undefined || (typeof arr !== "object" && !Array.isArray(arr)) || arr.length === 0) {
+        throw new Error("input should be non-empty array!");
+    }
+}
+
+function isElementInvalid(element) {
+    return values[i] === null || values[i] === undefined || typeof values[i] !== 'number';
+}
+
+function findMax(values) {
+    validationForFindMax(values);
+
+    let i = 0;
+    while (i < values.length && isElementInvalid(values[i])) {
+        i++
     }
 
-    let max = arr[0];
+    if (i >= values.length) {
+        return null;
+    }
 
-    for (let i = 1; i < arr.length; i++) {
-        let current = arr[i];
+    let max = values[i];
 
-        // element validation
-        if (current === null || current === undefined || typeof current !== 'number') {
+    for (let j = i; j < values.length; j++) {
+        if (isElementInvalid(values[j])) {
             continue;
         }
 
-        if (max < current) {
-            max = current;
+        if (max < values[j]) {
+            max = values[j];
         }
     }
 
-    // alternative: max = Math.max(...arr);
+    // alternative: max = Math.max(...values);
 
     return max;
 }
-
-console.log(findMax([1, 2, 4, 5, -1, 8]))
