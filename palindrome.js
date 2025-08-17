@@ -1,12 +1,16 @@
-const punctiations = ['.', ',', '?', "'", ':', ';', '!', '"'];
-const ignored = [' ', ...punctiations];
+const punctiations = new Set(
+    ['.', ',', '?', "'", ':', ';', '!', '"']
+);
+const ignored = new Set(
+    [' ', ...punctiations]
+);
 
 function normalize(text) {
     return text.toLowerCase();
 }
 
-function validationForIsPalindrome(input) {
-    if (input == null || input === undefined || typeof input !== 'string') {
+function validationForIsPalindrome(text) {
+    if (text == null || text === undefined || typeof text !== 'string') {
         throw new Error("input must be a string!");
     }
 }

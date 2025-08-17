@@ -24,8 +24,8 @@ function normalize(text) {
     );
 }
 
-function validationForCountWordFrequency(input) {
-    if (input == null || input === undefined || typeof input !== 'string' || input.length == 0) {
+function validationForCountWordFrequency(text) {
+    if (text == null || text === undefined || typeof text !== 'string' || text.length == 0) {
         throw new Error("input must be non-empty string!");
     }
 }

@@ -1,7 +1,8 @@
 function validationForSum(number) {
-    if (number === null || number === undefined || typeof number !== 'number' 
-        || Number.isNaN(number)|| !Number.isFinite(number) || !Number.isInteger(number) || number < 0) {
-        throw new Error("input should be non-negative integer number!");
+    if (number === null || number === undefined || typeof number !== 'number'
+        || Number.isNaN(number) || !Number.isFinite(number)
+        || !Number.isInteger(number) || number < 0) {
+        throw new Error("input must be a non-negative integer!");
     }
 }
 

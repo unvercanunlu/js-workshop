@@ -1,5 +1,5 @@
 function validationForFindMax(values) {
-    if (values === null || values === undefined || (typeof values !== "object" && !Array.isArray(values)) || values.length === 0) {
+    if (values === null || values === undefined || !Array.isArray(values) || values.length === 0) {
         throw new Error("input should be non-empty array!");
     }
 }
