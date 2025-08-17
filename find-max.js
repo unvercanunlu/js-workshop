@@ -1,11 +1,11 @@
-function validationForFindMax(arr) {
-    if (arr === null || arr === undefined || (typeof arr !== "object" && !Array.isArray(arr)) || arr.length === 0) {
+function validationForFindMax(values) {
+    if (values === null || values === undefined || (typeof values !== "object" && !Array.isArray(values)) || values.length === 0) {
         throw new Error("input should be non-empty array!");
     }
 }
 
 function isElementInvalid(element) {
-    return values[i] === null || values[i] === undefined || typeof values[i] !== 'number';
+    return element === null || element === undefined || typeof element !== 'number';
 }
 
 function findMax(values) {
