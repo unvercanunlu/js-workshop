@@ -29,8 +29,8 @@ function calculateMaxProfit(prices) {
             continue;
         }
 
-        let profit = prices[i] - buy;
-        maxProfit = Math.max(profit, maxProfit);
+        let currentProfit = prices[i] - buy;
+        maxProfit = Math.max(currentProfit, maxProfit);
         buy = Math.min(buy, prices[i]);
     }
 

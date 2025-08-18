@@ -38,11 +38,14 @@ function countWordFrequency(text) {
         return {};
     }
 
-    const normalized = normalize(text);
-
-    const splitted = normalized.split(' ')
+    const splitted = normalize(text)
+        .split(' ')
         .map(word => word.trim())
         .filter(word => word.length !== 0);
+
+    if (splitted.length == 0) {
+        return {};
+    }
 
     let frequencies = new Map();
 

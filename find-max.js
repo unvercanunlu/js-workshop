@@ -37,9 +37,7 @@ function findMax(values) {
             continue;
         }
 
-        if (max < values[j]) {
-            max = values[j];
-        }
+        max = Math.max(max, values[j]);
     }
 
     return max;
