@@ -1,12 +1,12 @@
-const pairs = new Map([
+const PAIRS = new Map([
     ['(', ')'],
     ['[', ']'],
     ['{', '}'],
     ['<', '>']
 ]);
 
-const opened = new Set(pairs.keys());
-const closed = new Set(pairs.values());
+const OPENED = new Set(PAIRS.keys());
+const CLOSED = new Set(PAIRS.values());
 
 function checkInputInvalid(input) {
     return input === null || input === undefined
@@ -22,10 +22,10 @@ function isValidParentheses(text) {
     const stack = [];
 
     for (const character of text) {
-        if (!opened.has(character) && !closed.has(character)) {
+        if (!OPENED.has(character) && !closed.has(character)) {
             console.warn("Character neither opened nor closed parentheses! character=" + character + " skipping...");
             continue;
-        } else if (opened.has(character)) {
+        } else if (OPENED.has(character)) {
             stack.push(character);
         } else if (closed.has(character)) {
             if (stack.length === 0) {
@@ -34,7 +34,7 @@ function isValidParentheses(text) {
 
             let last = stack.pop();
 
-            if (!opened.has(last) || (pairs.get(last) !== character)) {
+            if (!OPENED.has(last) || (PAIRS.get(last) !== character)) {
                 return false;
             }
         }

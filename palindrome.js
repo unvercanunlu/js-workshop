@@ -1,8 +1,8 @@
-const punctiations = new Set(
+const PUNCTIATIONS = new Set(
     ['.', ',', '?', "'", ':', ';', '!', '"']
 );
-const ignored = new Set(
-    [' ', ...punctiations]
+const IGNORED = new Set(
+    [' ', ...PUNCTIATIONS]
 );
 
 function normalize(text) {
@@ -30,11 +30,11 @@ function isPalindrome(text) {
     let j = normalized.length - 1;
 
     while (i < j) {
-        while (i < j && ignored.includes(normalized[i])) {
+        while (i < j && IGNORED.has(normalized[i])) {
             i++;
         }
 
-        while (i < j && ignored.includes(normalized[j])) {
+        while (i < j && IGNORED.has(normalized[j])) {
             j--;
         }
 
