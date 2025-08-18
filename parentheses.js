@@ -15,18 +15,27 @@ function checkInputInvalid(input) {
 
 function isValidParentheses(text) {
     if (checkInputInvalid(text)) {
-        throw new Error('input should be string!')
+        console.error("Input invalid! input=" + text);
+        throw new Error('input should be a string!')
     }
 
-    let stack = [];
+    const stack = [];
 
-    for (let i = 0; i < text.length; i++) {
-        if (!opened.has(text[i]) && !closed.has(text[i])) {
+    for (const character of text) {
+        if (!opened.has(character) && !closed.has(character)) {
             continue;
-        } else if (opened.has(text[i])) {
-            stack.push(text[i]);
-        } else if (closed.has(text[i]) && pairs.get(stack.pop()) !== text[i]) {
-            return false;
+        } else if (opened.has(character)) {
+            stack.push(character);
+        } else if (closed.has(character)) {
+            if (stack.length === 0) {
+                return false;
+            }
+
+            let last = stack.pop();
+
+            if (!opened.has(last) || (pairs.get(last) !== character)) {
+                return false;
+            }
         }
     }
 

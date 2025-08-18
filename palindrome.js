@@ -10,7 +10,7 @@ function normalize(text) {
 }
 
 function checkInputInvalid(input) {
-    return input === undefined || input == null
+    return input === undefined || input === null
         || typeof input !== 'string';
 }
 

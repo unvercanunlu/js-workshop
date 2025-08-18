@@ -1,12 +1,11 @@
 function checkInputInvalid(input) {
     return input === undefined || input === null
-        || !Array.isArray(input)
-        || input.length < 2;
+        || !Array.isArray(input);
 }
 
 function checkElementInvalid(element) {
     return element === undefined || element === null
-        || typeof input !== 'number'
+        || typeof element !== 'number'
         || Number.isNaN(element) || !Number.isFinite(element)
         || element < 0;
 }
@@ -14,10 +13,14 @@ function checkElementInvalid(element) {
 function calculateMaxProfit(prices) {
     if (checkInputInvalid(prices)) {
         console.error("Input invalid! input=" + prices);
-        throw new Error("Input must a array with at least 2 non-negative numbers!");
+        throw new Error("Input must a non-negative number array!");
     }
 
-    let maxProfit = Number.MIN_VALUE;
+    if (prices.length <= 1) {
+        return 0;
+    }
+
+    let maxProfit = Number.NEGATIVE_INFINITY;
     let buy = prices[0];
 
     for (let i = 1; i < prices.length; i++) {
