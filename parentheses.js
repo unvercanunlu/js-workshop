@@ -8,13 +8,15 @@ const pairs = new Map([
 const opened = new Set(pairs.keys());
 const closed = new Set(pairs.values());
 
-function validationForIsValidParentheses(text) {
-    if (text === null || text === undefined || typeof text !== 'string') {
-        throw new Error('input should be string!');
-    }
+function checkInputInvalid(input) {
+    return input === null || input === undefined
+        || typeof input !== 'string';
 }
 
 function isValidParentheses(text) {
+    if (checkInputInvalid(text)) {
+        throw new Error('input should be string!')
+    }
 
     let stack = [];
 

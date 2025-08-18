@@ -1,29 +1,39 @@
-function validationForFindMax(values) {
-    if (values === null || values === undefined || !Array.isArray(values) || values.length === 0) {
-        throw new Error("input should be non-empty array!");
-    }
+function checkInputInvalid(input) {
+    return input === undefined || input === null
+        || !Array.isArray(input)
+        || input.length === 0;
 }
 
-function isElementInvalid(element) {
-    return element === null || element === undefined || typeof element !== 'number';
+function checkElementInvalid(element) {
+    return element === undefined || element === null
+        || typeof element !== 'number'
+        || Number.isNaN(element);
 }
 
 function findMax(values) {
-    validationForFindMax(values);
+    if (checkInputInvalid(values)) {
+        console.error("Input invalid! input=" + values);
+        throw new Error("input should be non-empty array!");
+    }
+
+    // return Math.max(...values);
 
     let i = 0;
-    while (i < values.length && isElementInvalid(values[i])) {
+    while (i < values.length && checkElementInvalid(values[i])) {
+        console.warn("Element invalid! element=" + values[i] + " skipping...");
         i++
     }
 
     if (i >= values.length) {
+        console.warn("There is no valid element to compare each other!");
         return null;
     }
 
     let max = values[i];
 
     for (let j = i; j < values.length; j++) {
-        if (isElementInvalid(values[j])) {
+        if (checkElementInvalid(values[j])) {
+            console.warn("Element invalid! element=" + values[j] + " skipping...");
             continue;
         }
 
@@ -31,8 +41,6 @@ function findMax(values) {
             max = values[j];
         }
     }
-
-    // alternative: max = Math.max(...values);
 
     return max;
 }

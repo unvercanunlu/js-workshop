@@ -1,13 +1,15 @@
-function validationForSum(number) {
-    if (number === null || number === undefined || typeof number !== 'number'
-        || Number.isNaN(number) || !Number.isFinite(number)
-        || !Number.isInteger(number) || number < 0) {
-        throw new Error("input must be a non-negative integer!");
-    }
+function checkInputInvalid(input) {
+    return input === undefined || input === null
+        || typeof input !== 'number'
+        || Number.isNaN(input) || !Number.isFinite(input) || !Number.isInteger(input)
+        || input < 0;
 }
 
 function sum(number) {
-    validationForSum(number);
+    if (checkInputInvalid(number)) {
+        console.error("Input invalid! input=" + number);
+        throw new Error("input must be a non-negative integer!");
+    };
 
     /*
     

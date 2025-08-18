@@ -9,14 +9,16 @@ function normalize(text) {
     return text.toLowerCase();
 }
 
-function validationForIsPalindrome(text) {
-    if (text == null || text === undefined || typeof text !== 'string') {
-        throw new Error("input must be a string!");
-    }
+function checkInputInvalid(input) {
+    return input === undefined || input == null
+        || typeof input !== 'string';
 }
 
 function isPalindrome(text) {
-    validationForIsPalindrome(text);
+    if (checkInputInvalid(text)) {
+        console.error("Input invalid! input=" + text);
+        throw new Error("input must be a string!");
+    }
 
     if (text.length <= 1) {
         return true;

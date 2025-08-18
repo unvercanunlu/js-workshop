@@ -23,14 +23,17 @@ function normalize(text) {
     );
 }
 
-function validationForCountWordFrequency(text) {
-    if (text == null || text === undefined || typeof text !== 'string' || text.length == 0) {
-        throw new Error("input must be non-empty string!");
-    }
+function checkInputInvalid(input) {
+    return input === undefined || input == null
+        || typeof input !== 'string'
+        || input.length == 0;
 }
 
 function countWordFrequency(text) {
-    validationForCountWordFrequency(text);
+    if (checkInputInvalid(text)) {
+        console.error("Input invalid! input=" + text);
+        throw new Error("input must be non-empty string!");
+    }
 
     const normalized = normalize(text);
 
@@ -54,7 +57,9 @@ function countWordFrequency(text) {
 
         */
 
-        frequencies.set(word, (frequencies.get(word) || 0) + 1);
+        frequencies.set(word,
+            (frequencies.get(word) || 0) + 1
+        );
     }
 
     /*
