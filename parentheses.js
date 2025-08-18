@@ -32,7 +32,7 @@ function isValidParentheses(text) {
                 return false;
             }
 
-            let last = stack.pop();
+            const last = stack.pop();
 
             if (!OPENED.has(last) || (PAIRS.get(last) !== character)) {
                 return false;

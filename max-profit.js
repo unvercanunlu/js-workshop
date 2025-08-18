@@ -29,7 +29,7 @@ function calculateMaxProfit(prices) {
             continue;
         }
 
-        let currentProfit = prices[i] - buy;
+        const currentProfit = prices[i] - buy;
         maxProfit = Math.max(currentProfit, maxProfit);
         buy = Math.min(buy, prices[i]);
     }

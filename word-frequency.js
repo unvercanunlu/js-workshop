@@ -1,26 +1,6 @@
-function removePunctiations(text) {
-    /*
-
-    const empty = ' ';
-
-    return text.replace('.', empty)
-        .replace(',', empty)
-        .replace('?', empty)
-        .replace("'", empty)
-        .replace(':', empty)
-        .replace(';', empty)
-        .replace('!', empty)
-        .replace('"', empty);
-
-    */
-
-    return text.replace(/[.,?':;!"]/g, ' ');
-}
-
-function normalize(text) {
-    return removePunctiations(
-        text.toLowerCase()
-    );
+function removePunctuations(text) {
+    return text.replace(/[.,?:;!"]/g, ' ')
+        .replace(/['’]/g, ''); // for don't
 }
 
 function checkInputInvalid(input) {
@@ -38,18 +18,25 @@ function countWordFrequency(text) {
         return {};
     }
 
-    const splitted = normalize(text)
-        .split(' ')
-        .map(word => word.trim())
-        .filter(word => word.length !== 0);
+    const normalized = removePunctuations(text)
+        .trim()
+        .toLowerCase();
 
-    if (splitted.length == 0) {
+    if (normalized.length === 0) {
         return {};
     }
 
-    let frequencies = new Map();
+    const splitted = normalized.split(/\s+/)
+        .map(word => word.trim())
+        .filter(word => word.length !== 0);
 
-    for (let word of splitted) {
+    if (splitted.length === 0) {
+        return {};
+    }
+
+    const frequencies = new Map();
+
+    for (const word of splitted) {
         frequencies.set(word,
             (frequencies.get(word) || 0) + 1
         );
@@ -57,7 +44,7 @@ function countWordFrequency(text) {
 
     /*
 
-    let result = {};
+    const result = {};
 
     for (const word of frequencies.keys()) {
         result[word] = frequencies.get(word);
