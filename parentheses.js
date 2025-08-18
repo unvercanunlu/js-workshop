@@ -23,6 +23,7 @@ function isValidParentheses(text) {
 
     for (const character of text) {
         if (!opened.has(character) && !closed.has(character)) {
+            console.warn("Character neither opened nor closed parentheses! character=" + character + " skipping...");
             continue;
         } else if (opened.has(character)) {
             stack.push(character);
