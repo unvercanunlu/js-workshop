@@ -13,7 +13,7 @@ function checkElementInvalid(element) {
 function findMax(values) {
     if (checkInputInvalid(values)) {
         console.error("Input invalid! input=" + values);
-        throw new Error("input should be non-empty array!");
+        throw new Error("Input should be non-empty array!");
     }
 
     // return Math.max(...values);
