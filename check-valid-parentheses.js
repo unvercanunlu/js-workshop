@@ -13,7 +13,7 @@ function checkInputInvalid(input) {
         || typeof input !== 'string';
 }
 
-function isValidParentheses(text) {
+function checkValidParentheses(text) {
     if (checkInputInvalid(text)) {
         console.error("Input invalid! input=" + text);
         throw new Error('input should be a string!')
@@ -22,12 +22,12 @@ function isValidParentheses(text) {
     const stack = [];
 
     for (const character of text) {
-        if (!OPENED.has(character) && !closed.has(character)) {
+        if (!OPENED.has(character) && !CLOSED.has(character)) {
             console.warn("Character neither opened nor closed parentheses! character=" + character + " skipping...");
             continue;
         } else if (OPENED.has(character)) {
             stack.push(character);
-        } else if (closed.has(character)) {
+        } else if (CLOSED.has(character)) {
             if (stack.length === 0) {
                 return false;
             }

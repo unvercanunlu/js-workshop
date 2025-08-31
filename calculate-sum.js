@@ -5,7 +5,7 @@ function checkInputInvalid(input) {
         || input < 0;
 }
 
-function sum(number) {
+function calculatSum(number) {
     if (checkInputInvalid(number)) {
         console.error("Input invalid! input=" + number);
         throw new Error("Input must be a non-negative integer!");

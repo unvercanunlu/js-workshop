@@ -12,7 +12,7 @@ function checkNonNegativeNumber(element) {
         && !Number.isNaN(element);
 }
 
-function calculateTwoSum(values, target) {
+function findTwoSum(values, target) {
     if (!checkNonEmptyArray(values)) {
         throw new Error("First parameter should be non-empty array!");
     }

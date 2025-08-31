@@ -2,7 +2,7 @@ function checkInputInvalid(input) {
     return input === null || input === undefined || !Array.isArray(input);
 }
 
-function containsDuplicate(values) {
+function containDuplicate(values) {
     if (checkInputInvalid(values)) {
         throw new Error("Input should be an array!");
     }

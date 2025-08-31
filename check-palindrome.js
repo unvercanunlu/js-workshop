@@ -14,7 +14,7 @@ function checkInputInvalid(input) {
         || typeof input !== 'string';
 }
 
-function isPalindrome(text) {
+function checkPalindrome(text) {
     if (checkInputInvalid(text)) {
         console.error("Input invalid! input=" + text);
         throw new Error("Input must be a string!");
