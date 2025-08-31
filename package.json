@@ -1,0 +1,10 @@
+{
+  "name": "js-workshop",
+  "version": "0.1.0",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.34.0",
+    "eslint": "^9.34.0",
+    "globals": "^16.3.0"
+  }
+}
