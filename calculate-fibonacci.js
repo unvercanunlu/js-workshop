@@ -22,11 +22,10 @@ function calculateFibonacci(n) {
     /* dynamic programming */
     const store = [0, 1];
 
-    i = 2;
+    let i = 2;
 
     while (i <= n) {
         store[i] = store[i - 1] + store[i - 2];
-
         i++;
     }
 
