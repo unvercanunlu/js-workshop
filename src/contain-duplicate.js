@@ -1,21 +1,21 @@
-function checkInputInvalid(input) {
-    return input === null || input === undefined || !Array.isArray(input);
-}
+const checkInputInvalid = (input) => {
+  return input === null || input === undefined || !Array.isArray(input);
+};
 
-function containDuplicate(values) {
-    if (checkInputInvalid(values)) {
-        throw new Error("Input should be an array!");
+const containDuplicate = (values) => {
+  if (checkInputInvalid(values)) {
+    throw new Error('Input should be an array!');
+  }
+
+  const set = new Set();
+
+  for (let i = 0; i < values.length; i++) {
+    if (set.has(values[i])) {
+      return true;
     }
 
-    const set = new Set();
+    set.add(values[i]);
+  }
 
-    for (let i = 0; i < values.length; i++) {
-        if (set.has(values[i])) {
-            return true;
-        } else {
-            set.add(values[i]);
-        }
-    }
-
-    return false;
-}
+  return false;
+};

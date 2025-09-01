@@ -1,25 +1,30 @@
-function checkInputInvalid(input) {
-    return input === undefined || input === null
-        || typeof input !== "number" || Number.isNaN(input) || !Number.isFinite(input) || !Number.isInteger(input)
-        || input < 0;
-}
+const checkInputInvalid = (input) => {
+  return (
+    input === undefined ||
+    input === null ||
+    typeof input !== 'number' ||
+    Number.isNaN(input) ||
+    !Number.isFinite(input) ||
+    !Number.isInteger(input) ||
+    input < 0
+  );
+};
 
-function calculateFactorial(n) {
-    if (checkInputInvalid(n)) {
-        throw new Error("Input should be a non-negative number!");
-    }
+const calculateFactorial = (n) => {
+  if (checkInputInvalid(n)) {
+    throw new Error('Input should be a non-negative number!');
+  }
 
-    // base case
-    if (n === 0) {
-        return 1n;
-    }
+  // base case
+  if (n === 0) {
+    return 1;
+  }
 
-    /* recursive */
-    // return calculateFactorial(n - 1) * n;
+  /* recursive */
+  // return calculateFactorial(n - 1) * n;
 
-
-    /* dynamic programming*/
-    /*
+  /* dynamic programming*/
+  /*
 
     const store = [1n];
 
@@ -35,12 +40,12 @@ function calculateFactorial(n) {
 
     */
 
-    /* iterative */
-    let result = 1n;
+  /* iterative */
+  let result = 1;
 
-    for (let i = 1; i <= n; i++) {
-        result *= BigInt(i);
-    }
+  for (let i = 1; i <= n; i++) {
+    result *= BigInt(i);
+  }
 
-    return result;
-}
+  return result;
+};

@@ -1,18 +1,22 @@
-function checkInputInvalid(input) {
-    return input === undefined || input === null
-        || typeof input !== 'number'
-        || Number.isNaN(input) || !Number.isFinite(input) || !Number.isInteger(input)
-        || input < 0;
-}
+const checkInputInvalid = (input) => {
+  return (
+    input === undefined ||
+    input === null ||
+    typeof input !== 'number' ||
+    Number.isNaN(input) ||
+    !Number.isFinite(input) ||
+    !Number.isInteger(input) ||
+    input < 0
+  );
+};
 
-function calculatSum(number) {
-    if (checkInputInvalid(number)) {
-        console.error("Input invalid! input=" + number);
-        throw new Error("Input must be a non-negative integer!");
-    };
+const calculatSum = (number) => {
+  if (checkInputInvalid(number)) {
+    throw new Error('Input must be a non-negative integer!');
+  }
 
-    /* iterative */
-    /*
+  /* iterative */
+  /*
 
     let result = 0;
 
@@ -24,6 +28,6 @@ function calculatSum(number) {
 
     */
 
-    /* Gaussian formula */
-    return (number * (number + 1)) / 2;
-}
+  /* Gaussian formula */
+  return (number * (number + 1)) / 2;
+};
